@@ -1,13 +1,14 @@
+import * as React from "react";
+import { Link } from "react-router-dom";
+
 import { Button, fade } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import * as React from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
+        backgroundColor: fade(theme.palette.action.active, 0.25),
       },
       margin: theme.spacing(1),
     },

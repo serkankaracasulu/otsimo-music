@@ -1,7 +1,7 @@
-import * as React from "react";
 import axios from "axios";
 import * as querystring from "querystring";
 import { ParsedUrlQueryInput } from "querystring";
+import * as React from "react";
 
 export default function useQuery<
   TData,
@@ -18,7 +18,6 @@ export default function useQuery<
       queryString = "/" + query;
     }
     const route = `${path}${queryString}`;
-    console.log("route", route);
     axios({
       method: "get",
       url: route,
@@ -35,6 +34,7 @@ export default function useQuery<
         setError(true);
         setLoading(false);
       });
+    // eslint-disable-next-line
   }, []);
   return { data, loading, error };
 }

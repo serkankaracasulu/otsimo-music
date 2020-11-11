@@ -1,7 +1,9 @@
 import * as React from "react";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Context from "../Context";
+
 import { Fade } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+import Context from "../Context";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,14 +16,12 @@ export default function MusicPlayer() {
   const { musicUrl } = React.useContext(Context);
 
   return (
-    <Fade in={!!musicUrl}>
-      <audio
-        autoPlay
-        id="player"
-        controls
-        src={musicUrl}
-        className={classes.player}
-      ></audio>
-    </Fade>
+    <audio
+      autoPlay
+      id="player"
+      controls
+      src={musicUrl}
+      className={classes.player}
+    ></audio>
   );
 }

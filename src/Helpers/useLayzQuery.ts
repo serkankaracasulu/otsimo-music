@@ -1,11 +1,10 @@
-import * as React from "react";
 import axios from "axios";
 import * as querystring from "querystring";
-import { ParsedUrlQueryInput } from "querystring";
+import * as React from "react";
 
 export default function useLayzQuery<
   TData,
-  TVariables extends ParsedUrlQueryInput
+  TVariables extends querystring.ParsedUrlQueryInput
 >(
   path: string
 ): [

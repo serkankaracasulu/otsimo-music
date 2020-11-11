@@ -1,26 +1,27 @@
-import React from "react";
 import "./App.css";
-import AxiosInition from "./axiosInition";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import ContextProvier from "./Contex.Provier";
-import LandingPage from "./Pages/LandingPage";
-import SearchResultPage from "./Pages/SearchResultPage";
+
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import {
   AppBar,
   BottomNavigation,
   CssBaseline,
-  fade,
-  ThemeProvider,
   Toolbar,
-  Button,
 } from "@material-ui/core";
-import theme from "./theme";
-import MusicPlayer from "./Components/MusicPlayer";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+import AxiosInition from "./axiosInition";
 import AppBarSpace from "./Components/AppBarSpace";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import AlbumPage from "./Pages/AlbumPage";
 import HomeButton from "./Components/LogoButton";
+import MusicPlayer from "./Components/MusicPlayer";
+import SwitchDarkModeButton from "./Components/SwitchDarkModeButton";
+import ContextProvier from "./Contex.Provier";
+import AlbumPage from "./Pages/AlbumPage";
 import ArtisPage from "./Pages/ArtisPage";
+import LandingPage from "./Pages/LandingPage";
+import SearchResultPage from "./Pages/SearchResultPage";
+import AppThemeProvider from "./theme";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,13 +32,14 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "%100",
     },
     appBar: {
-      backgroundColor: fade(theme.palette.common.black, 0.75),
+      backgroundColor: theme.palette.text.secondary,
     },
     bottomBar: {
       position: "fixed",
       bottom: 0,
       width: "100%",
       backgroundColor: "transparent",
+      zIndex: 50,
     },
   })
 );
@@ -47,7 +49,7 @@ function App() {
   AxiosInition();
   return (
     <ContextProvier>
-      <ThemeProvider theme={theme}>
+      <AppThemeProvider>
         <BrowserRouter>
           <CssBaseline />
           <div className={classes.root}>
@@ -55,6 +57,7 @@ function App() {
               <Toolbar className={classes.toolBar}>
                 <HomeButton />
                 <LandingPage />
+                <SwitchDarkModeButton />
               </Toolbar>
             </AppBar>
             <AppBarSpace />
@@ -74,7 +77,7 @@ function App() {
             </BottomNavigation>
           </div>
         </BrowserRouter>
-      </ThemeProvider>
+      </AppThemeProvider>
     </ContextProvier>
   );
 }

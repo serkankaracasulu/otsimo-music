@@ -1,7 +1,5 @@
 import * as React from "react";
-import useLayzQuery from "../Helpers/useLayzQuery";
-import SearchIcon from "@material-ui/icons/Search";
-import { SearchMusicResponse, SearchMusicVariables } from "../types";
+
 import {
   createStyles,
   fade,
@@ -10,8 +8,12 @@ import {
   makeStyles,
   Theme,
 } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+
 import Context from "../Context";
+import useLayzQuery from "../Helpers/useLayzQuery";
 import useQuery from "../Helpers/useQuery";
+import { SearchMusicResponse, SearchMusicVariables } from "../types";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,9 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
       border: "solid 1px #b3b3b3",
       borderRadius: 20,
-      backgroundColor: fade(theme.palette.common.black, 0.45),
+      color: theme.palette.getContrastText(
+        fade(theme.palette.action.disabled, 0.45)
+      ),
+      backgroundColor: fade(theme.palette.action.disabled, 0.45),
       "&:hover": {
-        backgroundColor: fade(theme.palette.common.black, 0.25),
+        backgroundColor: fade(theme.palette.action.disabled, 0.25),
       },
       marginRight: theme.spacing(2),
       marginLeft: 0,
